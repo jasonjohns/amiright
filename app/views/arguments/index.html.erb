@@ -1,0 +1,26 @@
+<h2>You argue a lot</h2>
+
+<table class="responsive-table striped">
+  <thead>
+    <tr>
+      <th>Topic</th>
+      <th>With Who</th>
+      <th>Outcome</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @arguments.each do |argument| %>
+    <tr>
+      <td><%= link_to argument.topic, argument_path(argument) %></td>
+      <td><%= argument.with_who %></td>
+      <td><%= argument.outcome %></td>
+      <td><%= link_to 'Edit', edit_argument_path(argument), class: 'btn waves-effect waves-light green' %></td>
+      <td><%= link_to 'Destroy', argument_path(argument),
+              method: :delete,
+              data: { confirm: 'for reals?' }, class: 'btn waves-effect waves-light red' %></td>
+  <% end %>
+  </tbody>
+</table>
+<p>
+  <%= link_to 'New Argument', new_argument_path, class: 'btn waves-effect waves-light' %>
+</p>

@@ -1,0 +1,29 @@
+<%= form_for @argument do |f| %>
+<% if @argument.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@argument.errors.count, "error") %> prohibited
+        this argument from being saved:
+      </h2>
+      <ul>
+        <% @argument.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+<p>
+  <%= f.label :topic %><br>
+  <%= f.text_field :topic %>
+</p>
+<p>
+  <%= f.label :with_who %><br>
+  <%= f.text_field :with_who %>
+</p>
+<p class="range-field">
+  <%= f.label :outcome %><br>
+  <%= f.range_field :outcome, in: 0..100 %>
+</p>
+<%= f.submit "Submit", class: 'btn waves-effect waves-light' %>
+<%= link_to 'Back', arguments_path, class: 'btn waves-effect waves-light grey darken-3' %>
+<% end  %>
